@@ -1,0 +1,69 @@
+name: Go
+
+on:
+  push:
+    branches: ["main"]
+  pull_request:
+    branches: ["main"]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        include:
+          - goos: linux
+            ext: ""
+          - goos: windows
+            ext: ".exe"
+    steps:
+      - uses: actions/checkout@v7
+
+      - name: Set up Go
+        uses: actions/setup-go@v7
+        with:
+          go-version: "stable"
+
+      - name: Build
+        env:
+          GOOS: ${{ matrix.goos }}
+          GOARCH: amd64
+          CGO_ENABLED: "0"
+        run: go build -v -o aa1-${{ matrix.goos }}${{ matrix.ext }} .
+
+      - name: Stage files
+        run: |
+          mkdir -p dist
+          cp aa1-${{ matrix.goos }}${{ matrix.ext }} dist/
+          cp -r frontend dist/
+          cp db.sqlite3 dist/
+
+      - name: Upload artifact
+        uses: actions/upload-artifact@v7
+        with:
+          name: aa1-${{ matrix.goos }}
+          path: dist/
+
+  release:
+    needs: build
+    if: github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - name: Download artifacts
+        uses: actions/download-artifact@v7
+
+      - name: Zip artifacts
+        run: |
+          for d in aa1-*/; do
+            (cd "$d" && zip -r "../${d%/}.zip" .)
+          done
+
+      - name: Update latest release
+        uses: softprops/action-gh-release@v3
+        with:
+          tag_name: latest
+          name: Latest build
+          prerelease: true
+          files: aa1-*.zip

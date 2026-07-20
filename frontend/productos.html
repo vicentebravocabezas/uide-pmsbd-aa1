@@ -1,0 +1,129 @@
+<!doctype html>
+<html lang="es">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Granito Coffee Shop | Productos</title>
+        <link rel="stylesheet" href="css/styles.css" />
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap"
+            rel="stylesheet"
+        />
+        <script type="module" src="js/productos.js"></script>
+    </head>
+    <body>
+        <header>
+            <nav class="navbar">
+                <div class="brand">
+                    <img src="/media/logo-horizontal-white.svg" />
+                </div>
+                <div class="nav-links">
+                    <a href="/">Home</a>
+                    <a href="/empresa.html">Empresa</a>
+                    <a href="/productos.html">Productos</a>
+                    <a href="/oferta-del-mes.html">Oferta del mes</a>
+                    <a href="/localizacion.html">Localización</a>
+                    <a href="/contacto.html">Contacto</a>
+                    <a href="/noticias.html">Noticias</a>
+                </div>
+            </nav>
+        </header>
+
+        <main>
+            <h2 class="title">Productos</h2>
+            <p class="description">
+                Nuestro catálogo se carga directamente desde la base de datos.
+            </p>
+
+            <div id="catalogo"></div>
+
+            <section class="panel gap" id="gestion">
+                <h3>Administración de productos</h3>
+
+                <form id="form-producto" novalidate>
+                    <input type="hidden" id="p-id" />
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="p-nombre">Nombre</label>
+                            <input type="text" id="p-nombre" required />
+                        </div>
+                        <div class="form-group">
+                            <label for="p-categoria">Categoría</label>
+                            <select id="p-categoria" required></select>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="p-precio">Precio (USD)</label>
+                            <input
+                                type="number"
+                                id="p-precio"
+                                min="0"
+                                step="0.01"
+                                required
+                            />
+                        </div>
+                        <div class="form-group">
+                            <label for="p-imagen">Imagen</label>
+                            <input type="text" id="p-imagen" />
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="p-descripcion">Descripción</label>
+                        <textarea id="p-descripcion" rows="2"></textarea>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group checkbox-group">
+                            <input type="checkbox" id="p-oferta" />
+                            <label for="p-oferta">Es la oferta del mes</label>
+                        </div>
+                        <div class="form-group">
+                            <label for="p-descuento">Descuento (%)</label>
+                            <input
+                                type="number"
+                                id="p-descuento"
+                                min="0"
+                                max="100"
+                                value="0"
+                            />
+                        </div>
+                    </div>
+                    <button type="submit" class="btn-submit">Guardar</button>
+                    <button
+                        type="button"
+                        id="btn-cancelar"
+                        class="btn-submit btn-secondary hidden"
+                    >
+                        Cancelar
+                    </button>
+                </form>
+
+                <div class="table-wrap mt">
+                    <table class="data-table" id="tabla-productos">
+                        <thead>
+                            <tr>
+                                <th>Nombre</th>
+                                <th>Categoría</th>
+                                <th>Precio</th>
+                                <th>Oferta</th>
+                                <th>Acciones</th>
+                            </tr>
+                        </thead>
+                        <tbody></tbody>
+                    </table>
+                </div>
+            </section>
+        </main>
+
+        <footer>
+            <p>
+                <strong>Granito Coffee Shop</strong><br />
+                La Carolina, Quito<br />
+                2026 Granito Coffee Shop |
+                <a href="vibravoca@uide.edu.ec">vibravoca@uide.edu.ec</a>
+            </p>
+        </footer>
+    </body>
+</html>

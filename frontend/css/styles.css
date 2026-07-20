@@ -1,0 +1,495 @@
+* {
+    margin: 0;
+}
+
+body {
+    font-family: "Inter", sans-serif;
+    color: #3c2415;
+    background-color: #f5f0e8;
+}
+
+a {
+    color: inherit;
+}
+
+img {
+    max-width: 100%;
+}
+
+/* la cabecera se mantiene visible */
+header {
+    position: sticky;
+    top: 0;
+    /* utilizamos z-index para evitar que otros elementos se sobrepongan en la barra de navegación */
+    z-index: 100;
+}
+
+.title {
+    text-align: center;
+    margin-bottom: 1rem;
+    font-size: 2rem;
+    font-family: "Playfair Display", serif;
+}
+
+.navbar {
+    /* utilizamos flexbox para alinear elementos dentro de la barra */
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 0.5rem 1rem;
+    padding: 0.75rem 2rem;
+    background-color: #3c2415;
+    color: #f5f0e8;
+}
+
+.brand {
+    display: flex;
+    align-items: center;
+    font-size: 1.4rem;
+    font-weight: bold;
+    font-family: "Playfair Display", serif;
+}
+
+.brand img {
+    width: 160px;
+}
+
+.nav-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.25rem;
+}
+
+.nav-links a {
+    text-decoration: none;
+    font-size: 0.95rem;
+    padding: 0.25rem 0;
+    border-bottom: 2px solid transparent;
+}
+
+.nav-links a:hover {
+    border-color: #f5f0e8;
+}
+
+.width-lg {
+    max-width: 900px;
+}
+
+main {
+    max-width: 1100px;
+    margin-inline: auto;
+    padding: 2rem;
+}
+
+main .description {
+    text-align: center;
+    font-size: 1.125rem;
+    margin-bottom: 2rem;
+}
+
+.welcome {
+    text-align: center;
+    margin-bottom: 3rem;
+}
+
+.welcome h2 {
+    font-family: "Playfair Display", serif;
+    font-size: 2rem;
+    margin-bottom: 0.75rem;
+}
+
+.gap {
+    margin-bottom: 2rem;
+}
+
+/* cuerpo: imagen grande que ocupa la totalidad de su espacio */
+.hero {
+    position: relative;
+    border-radius: 0.5rem;
+    overflow: hidden;
+    margin-bottom: 3rem;
+    box-shadow:
+        0 4px 6px -1px rgb(0 0 0 / 0.1),
+        0 2px 4px -2px rgb(0 0 0 / 0.1);
+}
+
+.hero img {
+    width: 100%;
+    height: 420px;
+    object-fit: cover;
+    display: block;
+}
+
+.carousel {
+    margin-inline: auto;
+    border-radius: 0.5rem;
+    padding: 1rem;
+    box-shadow:
+        0 4px 6px -1px rgb(0 0 0 / 0.1),
+        0 2px 4px -2px rgb(0 0 0 / 0.1);
+    text-align: center;
+    background-color: #3c2415;
+    color: #f5f0e8;
+}
+
+.carousel h3 {
+    font-family: "Playfair Display", serif;
+    font-size: 1.25rem;
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+}
+
+.carousel p {
+    margin-inline: auto;
+    max-width: 640px;
+}
+
+/* secciones informativas (empresa, localización, noticias) */
+.panel {
+    background-color: white;
+    border-radius: 0.5rem;
+    padding: 1.5rem;
+    margin-bottom: 2rem;
+    box-shadow:
+        0 4px 6px -1px rgb(0 0 0 / 0.1),
+        0 2px 4px -2px rgb(0 0 0 / 0.1);
+}
+
+.panel h3 {
+    font-family: "Playfair Display", serif;
+    font-size: 1.25rem;
+    margin-bottom: 0.75rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid #f5f0e8;
+}
+
+.panel ul {
+    padding-left: 1.25rem;
+}
+
+.panel li {
+    margin-bottom: 0.4rem;
+    line-height: 1.5;
+}
+
+/* catálogo de productos */
+.catalog-category {
+    margin-bottom: 2.5rem;
+}
+
+.catalog-category > h3 {
+    font-family: "Playfair Display", serif;
+    font-size: 1.5rem;
+    margin-bottom: 0.25rem;
+}
+
+.product-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
+    gap: 1.5rem;
+}
+
+.product-card {
+    background-color: white;
+    border-radius: 0.5rem;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    box-shadow:
+        0 4px 6px -1px rgb(0 0 0 / 0.1),
+        0 2px 4px -2px rgb(0 0 0 / 0.1);
+    transition: box-shadow 0.3s;
+}
+
+.product-card:hover {
+    box-shadow:
+        0 10px 15px -3px rgb(0 0 0 / 0.1),
+        0 4px 6px -4px rgb(0 0 0 / 0.1);
+}
+
+.product-card img {
+    height: 180px;
+    width: 100%;
+    object-fit: cover;
+}
+
+.product-card .product-body {
+    padding: 0.75rem 1rem 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.35rem;
+    flex: 1;
+}
+
+.product-card h4 {
+    font-family: "Playfair Display", serif;
+    font-size: 1.1rem;
+}
+
+.product-card .product-desc {
+    font-size: 0.875rem;
+    color: #555;
+    flex: 1;
+}
+
+.price {
+    font-weight: 700;
+}
+
+.price-old {
+    text-decoration: line-through;
+    color: #999;
+    font-weight: 400;
+    margin-right: 0.5rem;
+}
+
+.badge-oferta {
+    display: inline-block;
+    background-color: #d9a566;
+    color: #3c2415;
+    font-size: 0.75rem;
+    font-weight: 700;
+    padding: 0.15rem 0.6rem;
+    border-radius: 1rem;
+}
+
+/* oferta del mes */
+.offer-panel {
+    display: flex;
+    gap: 2rem;
+    background-color: white;
+    border-radius: 0.5rem;
+    overflow: hidden;
+    box-shadow:
+        0 4px 6px -1px rgb(0 0 0 / 0.1),
+        0 2px 4px -2px rgb(0 0 0 / 0.1);
+    margin-bottom: 2rem;
+}
+
+.offer-panel img {
+    width: 45%;
+    object-fit: cover;
+}
+
+.offer-panel .offer-body {
+    padding: 2rem 2rem 2rem 0;
+}
+
+.offer-panel h3 {
+    font-family: "Playfair Display", serif;
+    font-size: 1.75rem;
+    margin: 0.5rem 0 0.75rem;
+}
+
+.offer-panel .offer-price {
+    font-size: 1.5rem;
+    margin: 1rem 0;
+}
+
+/* tablas de datos (gestión y reporte) */
+.table-wrap {
+    overflow-x: auto;
+}
+
+.data-table {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: white;
+    font-size: 0.9rem;
+}
+
+.data-table th,
+.data-table td {
+    text-align: left;
+    padding: 0.6rem 0.75rem;
+    border-bottom: 1px solid #e5ddd0;
+}
+
+.data-table thead th {
+    background-color: #3c2415;
+    color: #f5f0e8;
+    font-family: "Playfair Display", serif;
+    font-weight: 600;
+}
+
+.data-table tbody tr:hover {
+    background-color: #f8f4ec;
+}
+
+/* botones */
+.btn-submit {
+    background-color: #6f4e37;
+    color: #f5f0e8;
+    border: none;
+    padding: 0.75rem 1rem;
+    font-size: 1rem;
+    font-weight: 700;
+    border-radius: 0.5rem;
+    cursor: pointer;
+}
+
+.btn-submit:hover {
+    background-color: #3c2415;
+}
+
+.btn-small {
+    padding: 0.35rem 0.75rem;
+    font-size: 0.85rem;
+    border: none;
+    border-radius: 0.4rem;
+    cursor: pointer;
+    font-weight: 600;
+}
+
+.btn-edit {
+    background-color: #d9a566;
+    color: #3c2415;
+}
+
+.btn-delete {
+    background-color: #c0392b;
+    color: white;
+}
+
+.btn-secondary {
+    background-color: #e5ddd0;
+    color: #3c2415;
+}
+
+/* formularios */
+.form-section h2 {
+    margin-bottom: 1.5rem;
+    font-family: "Playfair Display", serif;
+    font-size: 2rem;
+    text-align: center;
+}
+
+.form-group {
+    margin-bottom: 1.2rem;
+    display: flex;
+    flex-direction: column;
+}
+
+.form-group label {
+    font-weight: 700;
+    font-family: "Playfair Display", serif;
+    font-size: 1.25rem;
+    margin-bottom: 0.3rem;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+    padding: 0.7rem;
+    border: 2px solid lightgray;
+    border-radius: 6px;
+    font-family: inherit;
+    font-size: 1rem;
+}
+
+.form-group input.invalid,
+.form-group select.invalid,
+.form-group textarea.invalid {
+    border-color: #c0392b;
+}
+
+.form-row {
+    display: flex;
+    gap: 1rem;
+}
+
+.form-row .form-group {
+    flex: 1;
+}
+
+.checkbox-group {
+    flex-direction: row;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.checkbox-group input {
+    width: 1.1rem;
+    height: 1.1rem;
+}
+
+.checkbox-group label {
+    font-size: 1rem;
+    margin-bottom: 0;
+}
+
+.error-message {
+    color: #c0392b;
+    font-size: 0.875rem;
+    margin-top: 0.2rem;
+}
+
+.success-message {
+    background-color: #d4edda;
+    border: 2px solid #28a745;
+    color: #155724;
+    padding: 1.5rem;
+    border-radius: 8px;
+    text-align: center;
+    margin-top: 1.5rem;
+}
+
+.success-message h3 {
+    margin-bottom: 0.5rem;
+}
+
+.hidden {
+    display: none;
+}
+
+.mt {
+    margin-top: 1.5rem;
+}
+
+.mailto {
+    margin-top: 1.5rem;
+    text-align: center;
+    font-size: 0.95rem;
+}
+
+footer {
+    text-align: center;
+    padding: 1.5rem;
+    font-size: 0.85rem;
+    line-height: 1.6;
+}
+
+/* diseño receptivo: tablets y móviles */
+@media (max-width: 768px) {
+    .navbar {
+        justify-content: center;
+    }
+
+    .nav-links {
+        justify-content: center;
+        gap: 0.9rem;
+    }
+
+    .hero img {
+        height: 280px;
+    }
+
+    .offer-panel {
+        flex-direction: column;
+    }
+
+    .offer-panel img {
+        width: 100%;
+        height: 240px;
+    }
+
+    .offer-panel .offer-body {
+        padding: 1.5rem;
+    }
+
+    .form-row {
+        flex-direction: column;
+        gap: 0;
+    }
+}
