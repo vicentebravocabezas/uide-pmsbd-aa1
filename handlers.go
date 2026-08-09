@@ -129,3 +129,39 @@ func validarProducto(p Producto) error {
 	}
 	return nil
 }
+
+func handleContacto(w http.ResponseWriter, r *http.Request) {
+	var c Contacto
+	if err := json.NewDecoder(r.Body).Decode(&c); err != nil {
+		writeError(w, http.StatusBadRequest, "campos recibidos inválidos")
+		return
+	}
+
+	switch {
+	case c.Nombre == "":
+		writeError(w, http.StatusBadRequest, "el nombre es obligatorio")
+		return
+	case c.Email == "":
+		writeError(w, http.StatusBadRequest, "ingresa un correo electrónico válido")
+		return
+	case c.Mensaje == "":
+		writeError(w, http.StatusBadRequest, "el mensaje es obligatorio")
+		return
+	}
+
+	if err := crearContacto(c); err != nil {
+		writeError(w, http.StatusInternalServerError, err.Error())
+		return
+	}
+
+	w.WriteHeader(http.StatusCreated)
+}
+
+func handleClima(w http.ResponseWriter, r *http.Request) {
+	clima, err := obtenerClima()
+	if err != nil {
+		writeError(w, http.StatusInternalServerError, err.Error())
+		return
+	}
+	writeJSON(w, http.StatusOK, clima)
+}

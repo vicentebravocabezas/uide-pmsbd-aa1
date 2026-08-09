@@ -157,3 +157,17 @@ func eliminarProducto(id int) error {
 	_, err := db.Exec(`DELETE FROM producto WHERE id_producto = ?`, id)
 	return err
 }
+
+type Contacto struct {
+	Nombre  string `json:"nombre"`
+	Email   string `json:"email"`
+	Mensaje string `json:"mensaje"`
+	Fecha   string `json:"fecha"`
+}
+
+func crearContacto(c Contacto) error {
+	_, err := db.Exec(
+		`INSERT INTO contacto (nombre, email, mensaje) VALUES (?, ?, ?)`,
+		c.Nombre, c.Email, c.Mensaje)
+	return err
+}

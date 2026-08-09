@@ -1,3 +1,5 @@
+import $ from "./jquery-4.0.0.module.min.js";
+
 const contactForm = document.getElementById("contact-form");
 if (contactForm) {
   const showError = (inputElement, errorId, message) => {
@@ -5,7 +7,7 @@ if (contactForm) {
     document.getElementById(errorId).textContent = message;
   };
 
-  contactForm.addEventListener("submit", (e) => {
+  contactForm.addEventListener("submit", async (e) => {
     // prevenir que el formulario se resetee al presionar el boton de submit
     e.preventDefault();
 
@@ -66,8 +68,20 @@ if (contactForm) {
 
     // mostrar mensaje de exito
     if (isValid) {
-      contactForm.style.display = "none";
-      document.getElementById("success-message").classList.remove("hidden");
+      document.getElementById("send-error").textContent = "";
+      const datos = {
+        nombre: name.value.trim(),
+        email: email.value.trim(),
+        mensaje: message.value.trim(),
+      };
+
+      $.post("/api/contacto", JSON.stringify(datos), () => {
+        contactForm.style.display = "none";
+        document.getElementById("success-message").classList.remove("hidden");
+      }).fail(() => {
+        document.getElementById("send-error").textContent =
+          "No se pudo guardar el mensaje.";
+      });
     }
   });
 }

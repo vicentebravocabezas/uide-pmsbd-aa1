@@ -11,4 +11,7 @@ func registerRoutes() {
 	http.HandleFunc("GET /api/productos/{id}", handleProducto)
 	http.HandleFunc("PUT /api/productos/{id}", handleModificarProducto)
 	http.HandleFunc("DELETE /api/productos/{id}", handleBorrarProducto)
+
+	http.HandleFunc("POST /api/contacto", handleContacto)
+	http.HandleFunc("GET /api/clima", handleClima)
 }

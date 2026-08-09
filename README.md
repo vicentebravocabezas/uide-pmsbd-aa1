@@ -1,4 +1,4 @@
-# Aprendizaje Autónomo 1 — Granito Coffee Shop
+# Aprendizaje Autónomo 2 — Granito Coffee Shop con Clima y Contactos
 
 Sitio web del emprendimiento digital **Granito Coffee Shop**.
 
